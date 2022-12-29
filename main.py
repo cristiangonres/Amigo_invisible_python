@@ -44,10 +44,10 @@ def emparejar_amigo():
 def enviar_mail(asignaciones):
     print(asignaciones)
     for mail, amigo in asignaciones.items():
-        remitente = 'amigoinvisible@amigoinvisible.es' 
+        remitente = 'amigoinvisible@satecma.com' 
         destinatario = mail 
         asunto = 'AMIGO INVISIBLE' 
-        mensaje = f"""Debes darle un regalo a {amigo}"""
+        mensaje = f"""Debes darle un regalo a {amigo} de un importe del rango {importe_min} - {importe_max}"""
         email = """From: %s 
         To: %s 
         MIME-Version: 1.0 
@@ -55,7 +55,7 @@ def enviar_mail(asignaciones):
         Subject: %s 
         %s
         """ % (remitente, destinatario, asunto, mensaje)
-        smtp = smtplib.SMTP('mail.satecma.com')
+        smtp = smtplib.SMTP('mail.server.com', 25)
         smtp.sendmail(remitente, destinatario, email)
     
     
