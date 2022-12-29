@@ -16,7 +16,7 @@ def add_members():
     while not continuar.startswith('n'):
         nombre = input(f'Introduzca el nombre del participante n {nparticipante}: ')
         email = input( f'Introduzca el email de {nombre}: ')
-        regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+        regex = re.compile(r'([A-Za-z0-9\.\-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
         if not re.fullmatch(regex, email):
             print(f'La dirección de correo de {nombre} es incorrecta. El participante no ha sido guardado.')
             continue
@@ -43,7 +43,7 @@ def emparejar_amigo():
     
 def enviar_mail(asignaciones):
     print(asignaciones)
-    for mail, amigo in asignaciones:
+    for mail, amigo in asignaciones.items():
         remitente = 'amigoinvisible@amigoinvisible.es' 
         destinatario = mail 
         asunto = 'AMIGO INVISIBLE' 
